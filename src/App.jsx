@@ -1,27 +1,30 @@
 import './App.css';
+import StudentTable from './components/StudentTable';
+import {students} from './data/StudentsDb';
+import { useState } from 'react';
 
 function App() {
+  const [fntSize, setFontSize] = useState(16);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+      <h1>Student Information Portal</h1>
+      <hr/>
+      <div align="left" >
+        Font Size:
+        <button onClick={()=>{setFontSize(16)}}>S</button>
+        <button onClick={()=>{setFontSize(20)}}>M</button>
+        <button onClick={()=>{setFontSize(24)}}>L</button>
+      </div>
+      <hr/>
+      <table width="100%" style={{ fontSize: `${fntSize}px`}}>
+        <tbody>
+          <tr>
+            <td>
+              <StudentTable students={students}/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
